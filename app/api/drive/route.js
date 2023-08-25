@@ -1,4 +1,3 @@
-import { log } from "console";
 import { NextResponse } from "next/server";
 
 // eslint-disable-next-line import/no-anonymous-default-export
