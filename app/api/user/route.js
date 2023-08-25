@@ -11,6 +11,7 @@ async function handler(req, res) {
     try {
       const newUser = await prisma.user.create({
         data: {
+          id: id,
           email : email,
           name: name,
         }

@@ -77,6 +77,7 @@ async function saveUserData(user) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        id: user.id,
         name: user.name,
         email: user.email,
       }),
