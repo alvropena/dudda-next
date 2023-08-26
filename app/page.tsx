@@ -19,8 +19,12 @@ const page = () => {
               organizarte, dirigir y crear en un mismo lugar.
             </p>
             <div className="flex space-x-4">
-              <Button onClick={() => signIn("google")}>Iniciar sesión</Button>
-              <a className="px-4 py-2 rounded border">
+              <Button onClick={() => signIn("google")}>Empieza ahora</Button>
+              <a
+                href="/contact-sales"
+                className="px-4 py-2 rounded border"
+                target="_blank"
+              >
                 Contacta a nuestro equipo de ventas
               </a>
             </div>

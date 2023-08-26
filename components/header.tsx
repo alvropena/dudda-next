@@ -19,7 +19,7 @@ import { Label } from "@/components/ui/label";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Header = () => {
-  const { data:session } = useSession(); 
+  const { data: session } = useSession();
   const handleSubmit = () => {
     signIn("google");
   };
@@ -29,15 +29,10 @@ const Header = () => {
         { href: "/dashboard", label: "Home" },
         { href: "/profile", label: "Profile" },
       ]
-    : [
-        { href: "/", label: "Dudda" },
-        { href: "/docs", label: "Documentación" },
-        { href: "/pricing", label: "Pricing" },
-        { href: "/faq", label: "FAQ" },
-      ];
+    : [{ href: "/", label: "Dudda" }];
 
   const handleSignOut = () => {
-    signOut(); 
+    signOut();
   };
 
   return (
@@ -51,53 +46,51 @@ const Header = () => {
           ))}
         </div>
 
-
         {session?.user ? (
           <Button onClick={handleSignOut}>Sign Out</Button>
         ) : (
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline">Iniciar sesión</Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Iniciar sesión</DialogTitle>
-              <DialogDescription>Ingresa a tu cuenta</DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="">
-                <Label htmlFor="name" className="">
-                  Correo electrónico
-                </Label>
-                <Input
-                  id="name"
-                  value=""
-                  className=""
-                  placeholder="hola@dudda.app"
-                />
-              </div>
-              <div className="">
-                <Label htmlFor="username" className="text-right">
-                  Contraseña
-                </Label>
-                <Input
-                  id="username"
-                  value=""
-                  className=""
-                  placeholder="******"
-                />
-              </div>
-            </div>
-            <Button onClick={handleSubmit}>
-              Continuar con Google
-            </Button>
-            <DialogFooter>
-              <Button type="submit">
-                Iniciar sesión
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+          <div className="flex flex-row items-center justify-center gap-2">
+            <ModeToggle />
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline">Iniciar sesión</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Iniciar sesión</DialogTitle>
+                  <DialogDescription>Ingresa a tu cuenta</DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="">
+                    <Label htmlFor="name" className="">
+                      Correo electrónico
+                    </Label>
+                    <Input
+                      id="name"
+                      value=""
+                      className=""
+                      placeholder="hola@dudda.app"
+                    />
+                  </div>
+                  <div className="">
+                    <Label htmlFor="username" className="text-right">
+                      Contraseña
+                    </Label>
+                    <Input
+                      id="username"
+                      value=""
+                      className=""
+                      placeholder="******"
+                    />
+                  </div>
+                </div>
+                <Button onClick={handleSubmit}>Continuar con Google</Button>
+                <DialogFooter>
+                  <Button type="submit">Iniciar sesión</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
         )}
       </header>
     </div>
