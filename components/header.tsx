@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { ModeToggle } from "@/components/mode-toggle";
+
 import UpgradeButton from "./upgrade-button";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,8 +36,8 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <header className="flex flex-row justify-between m-5">
+    <div className="">
+      <header className="flex flex-row justify-between">
         <div className="flex gap-x-6 items-center">
           {links.map((link) => (
             <Link href={link.href} key={link.label}>
@@ -47,20 +47,19 @@ const Header = () => {
         </div>
 
         {session?.user ? (
-          <Button onClick={handleSignOut}>Sign Out</Button>
+          <Button onClick={handleSignOut}>Cerrar sesión</Button>
         ) : (
           <div className="flex flex-row items-center justify-center gap-2">
-            <ModeToggle />
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="outline">Iniciar sesión</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Iniciar sesión</DialogTitle>
-                  <DialogDescription>Ingresa a tu cuenta</DialogDescription>
-                </DialogHeader>
-                <div className="grid gap-4 py-4">
+                <div className="">
+                  <p className="text-xl font-semibold">Iniciar sesión</p>
+                  <p className="text-gray-400">Ingresa a tu cuenta</p>
+                </div>
+                <div className="grid gap-4 ">
                   <div className="">
                     <Label htmlFor="name" className="">
                       Correo electrónico
@@ -68,7 +67,7 @@ const Header = () => {
                     <Input
                       id="name"
                       value=""
-                      className=""
+                      className="mt-3"
                       placeholder="hola@dudda.app"
                     />
                   </div>
@@ -79,15 +78,31 @@ const Header = () => {
                     <Input
                       id="username"
                       value=""
-                      className=""
-                      placeholder="******"
+                      className="mt-3"
+                      placeholder="*********"
                     />
                   </div>
                 </div>
-                <Button onClick={handleSubmit}>Continuar con Google</Button>
-                <DialogFooter>
-                  <Button type="submit">Iniciar sesión</Button>
-                </DialogFooter>
+                <button className="bg-black px-4 py-2 rounded border text-white">
+                  Iniciar sesión
+                </button>
+                <div className="flex items-center justify-center">
+                  <div className="flex-grow border-b border-gray-300 mx-2"></div>
+                  <p className="px-2 text-gray-300">o</p>
+                  <div className="flex-grow border-b border-gray-300 mx-2"></div>
+                </div>
+                <button
+                  onClick={() => {}}
+                  className="px-4 py-2 rounded border bg-white"
+                >
+                  Continuar con Google
+                </button>
+                <button
+                  onClick={() => {}}
+                  className="px-4 py-2 rounded border bg-white"
+                >
+                  Continuar con Microsoft
+                </button>
               </DialogContent>
             </Dialog>
           </div>

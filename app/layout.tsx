@@ -2,7 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
-import { ThemeProvider } from "@/components/theme-provider";
+
 import Header from "@/components/header";
 import { NextAuthProvider } from "./next-auth-provider";
 
@@ -21,12 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <NextAuthProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <body className={inter.className}>
+        <body>
           <Header />
           {children}
         </body>
-      </ThemeProvider>
       </NextAuthProvider>
       <Analytics />
     </html>
